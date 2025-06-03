@@ -1,0 +1,7 @@
+To initialize data base run once:
+    flask --app run db init
+Run every time after update of db classes:
+    flask --app run db migrate
+    flask --app run db upgrade
+Where "run" - is a name of .py file
+
