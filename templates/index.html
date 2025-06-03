@@ -6,7 +6,7 @@
     
     <ul>
     {% for person in people %}
-        <li>{{ person }} <button onclick="deletePerson({{ person.pid }})"> Delete</button></li>
+        <li>{{ person }} <button onclick="deletePerson({{ person.pid }})"> Delete</button><a href="{{ url_for('details', pid=person.pid)}}">Details</a></li>
     {% endfor %}
     </ul>
     

@@ -28,3 +28,7 @@ def register_routes(app, db):
         people = Person.query.all()
         return render_template(template_name_or_list='index.html',people=people)
 
+    @app.route('/details/<pid>')
+    def details(pid):
+        person = Person.query.filter(Person.pid == pid).first()
+        return render_template(template_name_or_list="details.html", person=person)
