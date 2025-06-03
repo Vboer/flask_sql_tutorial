@@ -3,7 +3,6 @@
 <head>
     <meta charset="UTF-8" />
     <title>{% block title %} Default Title{% endblock %}</title>
-    <link rel="stylesheet" type="text/css" href="/css/bootstrap.css">
 </head>
 <body>
 	{%with messages = get_flashed_messages()%}
@@ -17,6 +16,5 @@
 	{%endwith%}
     <p>This will always be here</p>
     {% block content %}{% endblock %}
-    <script src="/js/bootstrap.js"></script>
 </body>
 </html>

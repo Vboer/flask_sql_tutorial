@@ -6,7 +6,7 @@
     
     <ul>
     {% for person in people %}
-        <li>{{ person }}</li>
+        <li>{{ person }} <button onclick="deletePerson({{ person.pid }})"> Delete</button></li>
     {% endfor %}
     </ul>
     
@@ -16,5 +16,20 @@
         <input type="number" name="age" placeholder="Age"><br>
         <input type="text" name="job" placeholder="Job"><br>
         <input type="submit" value="Create"><br>
-    </form
+    </form>
+    <script type="text/javascript">
+        function deletePerson (pid){
+            fetch ('{{ url_for("delete", pid=pid) }}' + pid, {method:'DELETE'})
+            .then(response =>{
+                if (response.ok) {
+                    window.location.reload();
+                } else {
+                    console.error('Failed to delete item wiht pid: ', pid)
+                }
+            })
+            .catch (error =>{
+                console.error('Error during fetching: ', error)
+            })
+        }
+    </script>
 {% endblock %}

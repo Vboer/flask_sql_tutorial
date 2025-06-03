@@ -20,3 +20,11 @@ def register_routes(app, db):
         db.session.add(person)
         db.session.commit()
         return redirect('/')
+    
+    @app.route('/delete/<pid>', methods=['DELETE'])
+    def delete(pid):
+        Person.query.filter(Person.pid == pid).delete()
+        db.session.commit()
+        people = Person.query.all()
+        return render_template(template_name_or_list='index.html',people=people)
+
